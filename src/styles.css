@@ -5,7 +5,9 @@ body {
 }
 .city-links {
   color: blue;
+  font-weight: bold; /* To make the city links more prominent */
 }
+
 form {
   display: block;
 }
@@ -18,6 +20,9 @@ form {
   align-items: center;
 }
 
+.weather-condition {
+  font-size: 1.2em;
+}
 .weather-details {
   display: flex;
   justify-content: flex-end;

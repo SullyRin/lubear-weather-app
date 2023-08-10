@@ -10,15 +10,16 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="src/styles.css" />
     <script
       src="https://kit.fontawesome.com/bb6b3bd9b1.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <div class="row city-links">
+      <div class="row city-links justify-content-around">
         <div class="col-2">Ishgard</div>
         <div class="col-2 limsa">Limsa Lominsa</div>
         <div class="col-2 mordhona">Mor Dhona</div>
@@ -26,16 +27,28 @@
 
       <div class="row city-selector">
         <div class="col-5 d-flex">
-          <form class="w-100">
+          <form class="w-100" id="city-form">
             <div class="form-row">
-              <div class="col-9">
-                <input type="text" class="form-control" placeholder="City" />
+              <div class="col-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city-input"
+                  placeholder="City"
+                />
               </div>
-              <div class="col-3">
+              <div class="col-2">
                 <input
                   class="btn btn-primary w-100"
                   type="submit"
                   value="Submit"
+                />
+              </div>
+              <div class="col-4" id="current-location">
+                <input
+                  class="btn btn-primary w-100"
+                  type="submit"
+                  value="My Location"
                 />
               </div>
             </div>
@@ -43,11 +56,11 @@
         </div>
       </div>
       <div>
-        <h1>Gridania</h1>
+        <h1 id="city-name">Gridania</h1>
         <div class="row">
           <div class="col-6">
-            <div class="time-and-date">
-              <p>28th Sun, 13:00 Eorzea Time</p>
+            <div class="timeAnddate">
+              <p id="time-and-date">28th Sun, 13:00 Eorzea Time</p>
             </div>
           </div>
           <div class="col-6">
@@ -59,12 +72,13 @@
             </div>
           </div>
         </div>
-        <div class="weather-condition">
+        <div class="weather-condition" id="weather-condition">
           <h5>Sunny</h5>
         </div>
         <div class="weather-icon-temp">
           <i class="fa-regular fa-sun"></i>
-          <span class="temperature">18°C</span>
+          <span class="temperature" id="temperature">18°</span>
+          <a href="#">C</a> | <a href="#">F</a>
         </div>
       </div>
       <br />
