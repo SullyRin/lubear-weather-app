@@ -1,0 +1,54 @@
+body {
+  border: #808080 2px solid;
+  margin: 20px;
+  padding: 15px 15px 40px 15px;
+}
+.city-links {
+  color: blue;
+}
+form {
+  display: block;
+}
+.city-selector {
+  padding-top: 10px;
+}
+.time-and-date {
+  color: #808080;
+  display: flex;
+  align-items: center;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.wind {
+  text-align: right;
+  margin-left: 10px;
+}
+.fa-sun {
+  color: #ffd700;
+}
+.weather-icon-temp {
+  font-size: 50px;
+}
+.wind {
+  text-align: left;
+  margin-left: auto;
+}
+.fa-snowflake {
+  color: #b3e5fc;
+}
+.days {
+  text-align: center;
+}
+.weather-icons {
+  text-align: center;
+  font-size: 30px;
+}
+.icon-temp {
+  text-align: center;
+  font-size: 15px;
+}
