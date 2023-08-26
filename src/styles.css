@@ -4,8 +4,7 @@ body {
   padding: 15px 15px 40px 15px;
 }
 .city-links {
-  color: blue;
-  font-weight: bold; /* To make the city links more prominent */
+  font-weight: bold;
 }
 
 form {

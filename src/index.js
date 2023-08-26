@@ -34,7 +34,6 @@ timeAndDate.innerHTML = formattedDate;
 function displayWeather(response) {
   let temperature = Math.round(response.data.main.temp);
   let description = response.data.weather[0].description;
-  //  console.log(`Temperature received: ${temperature}°C`);
   let displayTemperature = document.querySelector("#temperature");
   let displayDescription = document.querySelector("#weather-condition");
 
@@ -60,9 +59,6 @@ let changeCity = document.querySelector("#city-form");
 changeCity.addEventListener("submit", cityInput);
 
 function handlePosition(position) {
-  // console.log(position.coords.latitude);
-  // console.log(position.coords.longitude);
-
   let lat = Math.round(position.coords.latitude);
   let lon = Math.round(position.coords.longitude);
   let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
