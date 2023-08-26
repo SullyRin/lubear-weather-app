@@ -23,7 +23,7 @@ function formatDate(date) {
   ];
   let month = months[date.getMonth()];
 
-  return `${day} ${month} ${date.getDate()} ${year}, ${hours}:${minutes} Eorzea Time`;
+  return `${day} ${month} ${date.getDate()} ${year}, ${hours}:${minutes}`;
 }
 
 let now = new Date();
@@ -48,9 +48,12 @@ function cityInput(event) {
   let cityNameElement = document.querySelector("#city-name");
   cityNameElement.innerHTML = cityName;
 
-  let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
-  let city = cityName;
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  // let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
+  let apiKey = "075f960bactbdbob9adb874ff63e3e05";
+  let query = cityName;
+  let url = `https://api.shecodes.io/weather/v1/forecast?query={query}&key={apiKey}`;
+
+  // let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
   axios.get(url).then(displayWeather);
 }
@@ -61,8 +64,10 @@ changeCity.addEventListener("submit", cityInput);
 function handlePosition(position) {
   let lat = Math.round(position.coords.latitude);
   let lon = Math.round(position.coords.longitude);
-  let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  // let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
+  let apiKey = "075f960bactbdbob9adb874ff63e3e05";
+  let url = `https://api.shecodes.io/weather/v1/forecast?lon={lon}&lat={lat}&key={apiKey}`;
+  //  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
   axios.get(url).then((response) => {
     let cityNameElement = document.querySelector("#city-name");
