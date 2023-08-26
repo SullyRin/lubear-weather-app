@@ -26,6 +26,8 @@ function formatDate(date) {
   return `${day} ${month} ${date.getDate()} ${year}, ${hours}:${minutes}`;
 }
 
+let currentUnit = "metric";
+
 let now = new Date();
 let formattedDate = formatDate(now);
 let timeAndDate = document.querySelector("#time-and-date");
@@ -57,20 +59,20 @@ function displayWeather(response) {
   displayDescription.innerHTML = description;
 }
 
+function fetchWeatherData(cityName) {
+  let apiKey = "075f960bactbdbob9adb874ff63e3e05";
+  let query = cityName;
+  let url = `https://api.shecodes.io/weather/v1/forecast?query=${query}&key=${apiKey}&units=${currentUnit}`;
+  axios.get(url).then(displayWeather);
+}
+
 function cityInput(event) {
   event.preventDefault();
   let cityNameInput = document.querySelector("#city-input");
   let cityName = cityNameInput.value;
   let cityNameElement = document.querySelector("#city-name");
   cityNameElement.innerHTML = cityName;
-
-  let apiKey = "075f960bactbdbob9adb874ff63e3e05";
-  let query = cityName;
-  let url = `https://api.shecodes.io/weather/v1/forecast?query=${query}&key=${apiKey}`;
-  // let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
-  // let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
-
-  axios.get(url).then(displayWeather);
+  fetchWeatherData(cityName);
 }
 
 let changeCity = document.querySelector("#city-form");
@@ -81,7 +83,7 @@ function handlePosition(position) {
   let lon = Math.round(position.coords.longitude);
 
   let apiKey = "075f960bactbdbob9adb874ff63e3e05";
-  let url = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}`;
+  let url = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=${currentUnit}`;
   //  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   // let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
 
@@ -103,6 +105,24 @@ function getCurrentLocation() {
 
 let currentPositionButton = document.querySelector("#current-location");
 currentPositionButton.addEventListener("click", getCurrentLocation);
+
+function changeToMetric(event) {
+  event.preventDefault();
+  currentUnit = "metric";
+  fetchWeatherData(document.querySelector("#city-name").textContent);
+}
+
+function changeToFahrenheit(event) {
+  event.preventDefault();
+  currentUnit = "imperial";
+  fetchWeatherData(document.querySelector("#city-name").textContent);
+}
+
+let metricButton = document.querySelector("#celcius");
+let fahrenheitButton = document.querySelector("#fahrenheit");
+
+metricButton.addEventListener("click", changeToMetric);
+fahrenheitButton.addEventListener("click", changeToFahrenheit);
 
 // function changeTempUnit(event) {
 //  event.preventDefault();
