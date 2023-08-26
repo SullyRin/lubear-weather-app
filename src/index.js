@@ -37,6 +37,10 @@ function displayWeather(response) {
   let displayTemperature = document.querySelector("#temperature");
   let displayDescription = document.querySelector("#weather-condition");
 
+  let currentWindSpeed = document.querySelector("#wind-speed");
+  let windSpeed = response.data.daily[0].wind.speed;
+  currentWindSpeed.innerHTML = `Wind Speed: ${windSpeed}`;
+
   let currentWeatherIconContainer = document.querySelector("#current-day-icon");
   let currentIconUrl = response.data.daily[0].condition.icon_url;
   currentWeatherIconContainer.innerHTML = `<img src="${currentIconUrl}" alt="${response.data.daily[0].condition.description}" />`;
