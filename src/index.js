@@ -32,8 +32,9 @@ let timeAndDate = document.querySelector("#time-and-date");
 timeAndDate.innerHTML = formattedDate;
 
 function displayWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let description = response.data.weather[0].description;
+  console.log(response.data);
+  let temperature = Math.round(response.data.daily[0].temperature.day);
+  let description = response.data.daily[0].condition.description;
   let displayTemperature = document.querySelector("#temperature");
   let displayDescription = document.querySelector("#weather-condition");
 
@@ -48,11 +49,10 @@ function cityInput(event) {
   let cityNameElement = document.querySelector("#city-name");
   cityNameElement.innerHTML = cityName;
 
-  // let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
   let apiKey = "075f960bactbdbob9adb874ff63e3e05";
   let query = cityName;
-  let url = `https://api.shecodes.io/weather/v1/forecast?query={query}&key={apiKey}`;
-
+  let url = `https://api.shecodes.io/weather/v1/forecast?query=${query}&key=${apiKey}`;
+  // let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
   // let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
   axios.get(url).then(displayWeather);
@@ -64,19 +64,22 @@ changeCity.addEventListener("submit", cityInput);
 function handlePosition(position) {
   let lat = Math.round(position.coords.latitude);
   let lon = Math.round(position.coords.longitude);
-  // let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
+
   let apiKey = "075f960bactbdbob9adb874ff63e3e05";
-  let url = `https://api.shecodes.io/weather/v1/forecast?lon={lon}&lat={lat}&key={apiKey}`;
+  let url = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}`;
   //  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  // let apiKey = "aca4dd3643b89e94dbd3cac6cf6f2638";
 
   axios.get(url).then((response) => {
     let cityNameElement = document.querySelector("#city-name");
     let temperatureElement = document.querySelector("#temperature");
     let descriptionElement = document.querySelector("#weather-condition");
 
-    cityNameElement.innerHTML = response.data.name;
-    temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}°`;
-    descriptionElement.innerHTML = response.data.weather[0].description;
+    cityNameElement.innerHTML = response.data.city;
+    temperatureElement.innerHTML = `${Math.round(
+      response.data.temperature.current
+    )}°`;
+    descriptionElement.innerHTML = response.data.condition.description;
   });
 }
 function getCurrentLocation() {
