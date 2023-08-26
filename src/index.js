@@ -32,11 +32,22 @@ let timeAndDate = document.querySelector("#time-and-date");
 timeAndDate.innerHTML = formattedDate;
 
 function displayWeather(response) {
-  console.log(response.data);
   let temperature = Math.round(response.data.daily[0].temperature.day);
   let description = response.data.daily[0].condition.description;
   let displayTemperature = document.querySelector("#temperature");
   let displayDescription = document.querySelector("#weather-condition");
+
+  let currentWeatherIconContainer = document.querySelector("#current-day-icon");
+  let currentIconUrl = response.data.daily[0].condition.icon_url;
+  currentWeatherIconContainer.innerHTML = `<img src="${currentIconUrl}" alt="${response.data.daily[0].condition.description}" />`;
+
+  let forecastIcons = document.querySelectorAll(".weather-icons .col-2");
+  for (let i = 0; i < 5; i++) {
+    let iconUrl = response.data.daily[i].condition.icon_url;
+    forecastIcons[
+      i
+    ].innerHTML = `<img src="${iconUrl}" alt="${response.data.daily[i].condition.description}" />`;
+  }
 
   displayTemperature.innerHTML = `${temperature}°`;
   displayDescription.innerHTML = description;

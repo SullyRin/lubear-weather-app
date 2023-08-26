@@ -74,8 +74,10 @@
         <div class="weather-condition" id="weather-condition">
           <h5>Sunny</h5>
         </div>
-        <div class="weather-icon-temp">
-          <i class="fa-regular fa-sun"></i>
+        <div class="weather-icon-temp" id="current-day-icon-container">
+          <span id="current-day-icon">
+            <i class="fa-regular fa-sun"></i>
+          </span>
           <span class="temperature" id="temperature">18°</span>
           <a href="#">C</a> | <a href="#">F</a>
         </div>
@@ -89,7 +91,9 @@
         <div class="col-2">Iceday</div>
       </div>
       <div class="row weather-icons">
-        <div class="col-2"><i class="fa-regular fa-sun"></i></div>
+        <div class="col-2" id="first-day">
+          <i class="fa-regular fa-sun"></i>
+        </div>
         <div class="col-2"><i class="fa-regular fa-snowflake"></i></div>
         <div class="col-2"><i class="fa-regular fa-sun"></i></div>
         <div class="col-2"><i class="fa-regular fa-sun"></i></div>
