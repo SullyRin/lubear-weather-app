@@ -129,17 +129,3 @@ let fahrenheitButton = document.querySelector("#fahrenheit");
 
 metricButton.addEventListener("click", changeToMetric);
 fahrenheitButton.addEventListener("click", changeToFahrenheit);
-
-// function changeTempUnit(event) {
-//  event.preventDefault();
-//  let TempInF = document.querySelector("#c-to-f");
-
-//  if (TempInF.textContent === "18°") {
-//    TempInF.innerHTML = "64°";
-//  } else {
-//    TempInF.innerHTML = "18°";
-//  }
-// }
-
-// let convertToFahrenheit = document.querySelector("#temperature");
-// convertToFahrenheit.addEventListener("click", changeTempUnit);
