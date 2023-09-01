@@ -38,6 +38,8 @@ function displayWeather(response) {
   let description = response.data.daily[0].condition.description;
   let displayTemperature = document.querySelector("#temperature");
   let displayDescription = document.querySelector("#weather-condition");
+  let cityNameElement = document.querySelector("#city-name");
+  cityNameElement.innerHTML = response.data.city;
 
   let currentWindSpeed = document.querySelector("#wind-speed");
   let windSpeed = response.data.daily[0].wind.speed;
@@ -137,3 +139,26 @@ let fahrenheitButton = document.querySelector("#fahrenheit");
 
 metricButton.addEventListener("click", changeToMetric);
 fahrenheitButton.addEventListener("click", changeToFahrenheit);
+
+document
+  .querySelector("#link-london")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default link action
+    fetchWeatherData("London");
+  });
+
+document
+  .querySelector("#link-new-york")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default link action
+    fetchWeatherData("New York");
+  });
+
+document
+  .querySelector("#link-barcelona")
+  .addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default link action
+    fetchWeatherData("Barcelona");
+  });
+
+fetchWeatherData("New York");
