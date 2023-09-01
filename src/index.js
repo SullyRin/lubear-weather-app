@@ -63,6 +63,14 @@ function displayWeather(response) {
     let weeklyTemp = Math.round(response.data.daily[i].temperature.day);
     forecastTemperature[i].innerHTML = `${weeklyTemp}`;
   }
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let currentDayIndex = new Date().getDay();
+
+  let forecastDays = document.querySelectorAll("#weekdays .col-2"); // Assuming you have a class for each day of the week in the forecast, adjust this as needed
+  for (let i = 0; i < 5; i++) {
+    let forecastDayIndex = (currentDayIndex + i + 1) % 7;
+    forecastDays[i].innerHTML = days[forecastDayIndex];
+  }
 }
 
 function fetchWeatherData(cityName) {
