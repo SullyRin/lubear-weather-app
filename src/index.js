@@ -57,6 +57,12 @@ function displayWeather(response) {
 
   displayTemperature.innerHTML = `${temperature}°`;
   displayDescription.innerHTML = description;
+
+  let forecastTemperature = document.querySelectorAll("#week-temp .col-2");
+  for (let i = 0; i < 5; i++) {
+    let weeklyTemp = Math.round(response.data.daily[i].temperature.day);
+    forecastTemperature[i].innerHTML = `${weeklyTemp}`;
+  }
 }
 
 function fetchWeatherData(cityName) {
