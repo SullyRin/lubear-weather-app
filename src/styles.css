@@ -1,4 +1,4 @@
-body {
+.container {
   border: #808080 2px solid;
   margin: 20px;
   padding: 15px 15px 40px 15px;
@@ -55,4 +55,9 @@ form {
 .icon-temp {
   text-align: center;
   font-size: 15px;
+}
+.open-source-link {
+  margin-left: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
